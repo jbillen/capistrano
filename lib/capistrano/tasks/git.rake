@@ -32,7 +32,7 @@ namespace :git do
 
   desc 'Clone the repo to the cache'
   task clone: :'git:wrapper' do
-    on release_roles :all do
+    on release_roles(:all), in: :groups, limit: fetch(:rolling_group_size), wait: fetch(:rolling_group_wait) do
       if strategy.test
         info t(:mirror_exists, at: repo_path)
       else
@@ -47,7 +47,7 @@ namespace :git do
 
   desc 'Update the repo mirror to reflect the origin state'
   task update: :'git:clone' do
-    on release_roles :all do
+    on release_roles(:all), in: :groups, limit: fetch(:rolling_group_size), wait: fetch(:rolling_group_wait) do
       within repo_path do
         with fetch(:git_environmental_variables) do
           strategy.update
@@ -58,7 +58,7 @@ namespace :git do
 
   desc 'Copy repo to releases'
   task create_release: :'git:update' do
-    on release_roles :all do
+    on release_roles(:all), in: :groups, limit: fetch(:rolling_group_size), wait: fetch(:rolling_group_wait) do
       with fetch(:git_environmental_variables) do
         within repo_path do
           execute :mkdir, '-p', release_path
