@@ -82,8 +82,8 @@ namespace :deploy do
     desc 'Symlink release to current'
     task :release do
       on release_roles :all do
-        execute :rm, '-rf', current_path
-        execute :ln, '-s', release_path, current_path
+        execute :ln, '-s', release_path, 'new'
+	execute :mv, '-T', 'new', current_path
       end
     end
 
