@@ -6,15 +6,18 @@ Reverse Chronological Order:
 
 https://github.com/capistrano/capistrano/compare/v3.2.1...HEAD
 
+Breaking Changes:
+  * By using Ruby's noecho method introduced in Ruby version 1.9.3, we dropped support for Ruby versions prior to 1.9.3. See [issue #878](https://github.com/capistrano/capistrano/issues/878) and [PR #1112](https://github.com/capistrano/capistrano/pull/1112) for more information. (@kaikuchn)
+
 * Bug Fixes:
   * Fixed compatibility with FreeBSD tar (@robbertkl)
 
 * Minor Changes
+  * Capistrano now allows to customize `local_user` for revision log. (@sauliusgrigaitis)
   * Added tests for after/before hooks features (@juanibiapina, @miry)
   * Improved the output of `cap --help`. (@mbrictson)
   * Cucumber suite now runs on the latest version of Vagrant (@tpett)
-  * The `ask` method now supports the `echo: false` option. (@mbrictson)
-  * Capistrano now depends on the `highline` gem.
+  * The `ask` method now supports the `echo: false` option. (@mbrictson, @kaikuchn)
 
 ## `3.2.1`
 
