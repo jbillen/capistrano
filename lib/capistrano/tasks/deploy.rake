@@ -85,6 +85,7 @@ namespace :deploy do
 	execute :ln, '-s', release_path, "#{deploy_to}/new"
         execute :mv, '-T', "#{deploy_to}/new", current_path
       end
+
     end
 
     desc 'Symlink files and directories from shared to release'
