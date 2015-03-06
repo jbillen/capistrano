@@ -6,6 +6,10 @@ require_relative 'configuration/servers'
 module Capistrano
   class Configuration
 
+    def initialize(config = nil)
+      @config ||= config
+    end
+
     def self.env
       @env ||= new
     end
@@ -15,7 +19,7 @@ module Capistrano
     end
 
     def ask(key, default=nil, options={})
-      question = Question.new(self, key, default, options)
+      question = Question.new(key, default, options)
       set(key, question)
     end
 
@@ -59,6 +63,10 @@ module Capistrano
       servers.roles_for(names)
     end
 
+    def role_properties_for(names, &block)
+      servers.role_properties_for(names, &block)
+    end
+
     def primary(role)
       servers.fetch_primary(role)
     end
@@ -78,7 +86,7 @@ module Capistrano
         sshkit.backend.configure do |backend|
           backend.pty                = fetch(:pty)
           backend.connection_timeout = fetch(:connection_timeout)
-          backend.ssh_options        = fetch(:ssh_options) if fetch(:ssh_options)
+          backend.ssh_options        = (backend.ssh_options || {}).merge(fetch(:ssh_options,{}))
         end
       end
     end
@@ -91,7 +99,7 @@ module Capistrano
       @filters = cmdline_filters.clone
       @filters << Filter.new(:role, ENV['ROLES']) if ENV['ROLES']
       @filters << Filter.new(:host, ENV['HOSTS']) if ENV['HOSTS']
-      fh = fetch_for(:filter,{})
+      fh = fetch_for(:filter,{}) || {}
       @filters << Filter.new(:host, fh[:host]) if fh[:host]
       @filters << Filter.new(:role, fh[:role]) if fh[:role]
     end

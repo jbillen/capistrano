@@ -33,7 +33,7 @@ module Capistrano
       end
 
       describe 'comparing identity' do
-        subject { server.matches? Server[hostname] }
+        subject { server.hostname == Server[hostname].hostname }
 
         context 'with the same user, hostname and port' do
           let(:hostname) { 'root@hostname:1234' }
@@ -42,12 +42,12 @@ module Capistrano
 
         context 'with a different user' do
           let(:hostname) { 'deployer@hostname:1234' }
-          it { expect(subject).to be_falsey }
+          it { expect(subject).to be_truthy }
         end
 
         context 'with a different port' do
           let(:hostname) { 'root@hostname:5678' }
-          it { expect(subject).to be_falsey }
+          it { expect(subject).to be_truthy }
         end
 
         context 'with a different hostname' do
@@ -93,6 +93,10 @@ module Capistrano
 
           it 'sets the user' do
             expect(server.user).to eq 'tomc'
+          end
+
+          it 'sets the netssh_options user' do
+            expect(server.netssh_options[:user]).to eq 'tomc'
           end
         end
 
@@ -172,6 +176,18 @@ module Capistrano
           end
 
           context 'value does not match server properly' do
+            context 'with :active true' do
+              let(:options) { { active: true }}
+              it { expect(subject).to be_truthy }
+            end
+
+            context 'with :active false' do
+              let(:options) { { active: false }}
+              it { expect(subject).to be_falsey }
+            end
+          end
+
+          context 'value does not match server properly' do
             context 'with :filter' do
               let(:options) { { filter: :inactive }}
               it { expect(subject).to be_falsey }
@@ -186,6 +202,18 @@ module Capistrano
               let(:options) { { exclude: :inactive }}
               it { expect(subject).to be_truthy }
             end
+          end
+        end
+
+        context 'key is a property' do
+          context 'with :active true' do
+            let(:options) { { active: true }}
+            it { expect(subject).to be_truthy }
+          end
+
+          context 'with :active false' do
+            let(:options) { { active: false }}
+            it { expect(subject).to be_falsey }
           end
         end
 
@@ -260,6 +288,9 @@ module Capistrano
           end
           it 'contains correct user' do
             expect(server.netssh_options[:user]).to eq 'another_user'
+          end
+          it 'does not affect server user in host' do
+            expect(server.user).to eq 'user_name'
           end
           it 'contains keys' do
             expect(server.netssh_options[:keys]).to eq %w(/home/another_user/.ssh/id_rsa)

@@ -5,6 +5,13 @@ module Capistrano
     let(:config) { Configuration.new }
     let(:servers) { stub }
 
+    describe '.new' do
+      it 'accepts initial hash' do
+        configuration = described_class.new(custom: 'value')
+        expect(configuration.fetch(:custom)).to eq('value')
+      end
+    end
+
     describe '.env' do
       it 'is a global accessor to a single instance' do
         Configuration.env.set(:test, true)
@@ -154,7 +161,7 @@ module Capistrano
       let(:options) { Hash.new }
 
       before do
-        Configuration::Question.expects(:new).with(config, :branch, :default, options).
+        Configuration::Question.expects(:new).with(:branch, :default, options).
           returns(question)
       end
 
@@ -172,6 +179,17 @@ module Capistrano
       it 'can be set to another class' do
         config.backend = :test
         expect(config.backend).to eq :test
+      end
+
+      describe "ssh_options for Netssh" do
+        it 'merges them with the :ssh_options variable' do
+          config.set :format, :pretty
+          config.set :log_level, :debug
+          config.set :ssh_options, { user: 'albert' }
+          SSHKit::Backend::Netssh.configure do |ssh| ssh.ssh_options = { password: 'einstein' } end
+          config.configure_backend
+          expect(config.backend.config.backend.config.ssh_options).to eq({ user: 'albert', password: 'einstein' })
+        end
       end
     end
   end

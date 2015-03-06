@@ -15,7 +15,7 @@ describe Capistrano::DSL do
         dsl.server 'example2.com', roles: %w{web}
         dsl.server 'example3.com', roles: %w{app web}, active: true
         dsl.server 'example4.com', roles: %w{app}, primary: true
-        dsl.server 'example5.com', roles: %w{db}, no_release: true
+        dsl.server 'example5.com', roles: %w{db}, no_release: true, active:true
       end
 
       describe 'fetching all servers' do
@@ -241,23 +241,43 @@ describe Capistrano::DSL do
       end
 
       describe 'fetching all servers' do
-        subject { dsl.roles(:all).map { |server| "#{server.user}@#{server.hostname}:#{server.port}" } }
-
-        it 'creates a server instance for each unique user@host:port combination' do
-          expect(subject).to eq %w{db@example1.com:1234 root@example1.com:1234 @example1.com:5678 deployer@example1.com:1234}
+        it 'creates one server per hostname, ignoring user and port combinations' do
+          expect(dsl.roles(:all).size).to eq(1)
         end
       end
 
       describe 'fetching servers for a role' do
         it 'roles defined using the `server` syntax are included' do
-          expect(dsl.roles(:web).size).to eq(2)
+          as = dsl.roles(:web).map { |server| "#{server.user}@#{server.hostname}:#{server.port}" }
+          expect(as.size).to eq(1)
+          expect(as[0]).to eq("deployer@example1.com:5678")
         end
 
         it 'roles defined using the `role` syntax are included' do
-          expect(dsl.roles(:app).size).to eq(2)
+          as = dsl.roles(:app).map { |server| "#{server.user}@#{server.hostname}:#{server.port}" }
+          expect(as.size).to eq(1)
+          expect(as[0]).to eq("deployer@example1.com:5678")
         end
       end
 
+    end
+
+    describe 'when setting user and port' do
+      subject { dsl.roles(:all).map { |server| "#{server.user}@#{server.hostname}:#{server.port}" }.first }
+
+      describe "using the :user property" do
+        it "takes precedence over in the host string" do
+          dsl.server 'db@example1.com:1234', roles: %w{db}, active: true, user: 'brian'
+          expect(subject).to eq("brian@example1.com:1234")
+        end
+      end
+
+      describe "using the :port property" do
+        it "takes precedence over in the host string" do
+          dsl.server 'db@example1.com:9090', roles: %w{db}, active: true, port: 1234
+          expect(subject).to eq("db@example1.com:1234")
+        end
+      end
     end
 
   end
@@ -415,112 +435,6 @@ describe Capistrano::DSL do
 
   end
 
-  describe 'release path' do
-
-    before do
-      dsl.set(:deploy_to, '/var/www')
-    end
-
-    describe 'fetching release path' do
-      subject { dsl.release_path }
-
-      context 'where no release path has been set' do
-        before do
-          dsl.delete(:release_path)
-        end
-
-        it 'returns the `current_path` value' do
-          expect(subject.to_s).to eq '/var/www/current'
-        end
-      end
-
-      context 'where the release path has been set' do
-        before do
-          dsl.set(:release_path, '/var/www/release_path')
-        end
-
-        it 'returns the set `release_path` value' do
-          expect(subject.to_s).to eq '/var/www/release_path'
-        end
-      end
-    end
-
-    describe 'setting release path' do
-      let(:now) { Time.parse("Oct 21 16:29:00 2015") }
-      subject { dsl.release_path }
-
-      context 'without a timestamp' do
-        before do
-          dsl.env.expects(:timestamp).returns(now)
-          dsl.set_release_path
-        end
-
-        it 'returns the release path with the current env timestamp' do
-          expect(subject.to_s).to eq '/var/www/releases/20151021162900'
-        end
-      end
-
-      context 'with a timestamp' do
-        before do
-          dsl.set_release_path('timestamp')
-        end
-
-        it 'returns the release path with the timestamp' do
-          expect(subject.to_s).to eq '/var/www/releases/timestamp'
-        end
-      end
-    end
-
-    describe 'setting deploy configuration path' do
-      subject { dsl.deploy_config_path.to_s }
-
-      context 'where no config path is set' do
-        before do
-          dsl.delete(:deploy_config_path)
-        end
-
-        it 'returns "config/deploy.rb"' do
-          expect(subject).to eq 'config/deploy.rb'
-        end
-      end
-
-      context 'where a custom path is set' do
-        before do
-          dsl.set(:deploy_config_path, 'my/custom/path.rb')
-        end
-
-        it 'returns the custom path' do
-          expect(subject).to eq 'my/custom/path.rb'
-        end
-      end
-    end
-
-    describe 'setting stage configuration path' do
-      subject { dsl.stage_config_path.to_s }
-
-      context 'where no config path is set' do
-
-        before do
-          dsl.delete(:stage_config_path)
-        end
-
-        it 'returns "config/deploy"' do
-          expect(subject).to eq 'config/deploy'
-        end
-      end
-
-      context 'where a custom path is set' do
-        before do
-          dsl.set(:stage_config_path, 'my/custom/path')
-        end
-
-        it 'returns the custom path' do
-          expect(subject).to eq 'my/custom/path'
-        end
-      end
-    end
-  end
-
   describe 'local_user' do
     before do
       dsl.set :local_user, -> { Etc.getlogin }
@@ -553,58 +467,149 @@ describe Capistrano::DSL do
 
   describe 'on()' do
 
+    describe "when passed server objects" do
+
+      before do
+        dsl.server 'example1.com', roles: %w{web}, active: true
+        dsl.server 'example2.com', roles: %w{web}
+        dsl.server 'example3.com', roles: %w{app web}, active: true
+        dsl.server 'example4.com', roles: %w{app}, primary: true
+        dsl.server 'example5.com', roles: %w{db}, no_release: true
+        @coordinator = mock('coordinator')
+        @coordinator.expects(:each).returns(nil)
+        ENV.delete 'ROLES'
+        ENV.delete 'HOSTS'
+      end
+
+      it 'filters by role from the :filter variable' do
+        hosts = dsl.roles(:web)
+        all = dsl.roles(:all)
+        SSHKit::Coordinator.expects(:new).with(hosts).returns(@coordinator)
+        dsl.set :filter, { role: 'web' }
+        dsl.on(all)
+      end
+
+      it 'filters by host and role from the :filter variable' do
+        all = dsl.roles(:all)
+        SSHKit::Coordinator.expects(:new).with([]).returns(@coordinator)
+        dsl.set :filter, { role: 'db', host: 'example3.com' }
+        dsl.on(all)
+      end
+
+      it 'filters from ENV[ROLES]' do
+        hosts = dsl.roles(:db)
+        all = dsl.roles(:all)
+        SSHKit::Coordinator.expects(:new).with(hosts).returns(@coordinator)
+        ENV['ROLES'] = 'db'
+        dsl.on(all)
+      end
+
+      it 'filters from ENV[HOSTS]' do
+        hosts = dsl.roles(:db)
+        all = dsl.roles(:all)
+        SSHKit::Coordinator.expects(:new).with(hosts).returns(@coordinator)
+        ENV['HOSTS'] = 'example5.com'
+        dsl.on(all)
+      end
+
+      it 'filters by ENV[HOSTS] && ENV[ROLES]' do
+        all = dsl.roles(:all)
+        SSHKit::Coordinator.expects(:new).with([]).returns(@coordinator)
+        ENV['HOSTS'] = 'example5.com'
+        ENV['ROLES'] = 'web'
+        dsl.on(all)
+      end
+
+    end
+
+    describe "when passed server literal names" do
+
+      before do
+        ENV.delete 'ROLES'
+        ENV.delete 'HOSTS'
+        @coordinator = mock('coordinator')
+        @coordinator.expects(:each).returns(nil)
+      end
+
+      it "selects nothing when a role filter is present" do
+        dsl.set :filter, { role: 'web' }
+        SSHKit::Coordinator.expects(:new).with([]).returns(@coordinator)
+        dsl.on('my.server')
+      end
+
+      it "selects using the string when a host filter is present" do
+        dsl.set :filter, { host: 'server.local' }
+        SSHKit::Coordinator.expects(:new).with(['server.local']).returns(@coordinator)
+        dsl.on('server.local')
+      end
+
+      it "doesn't select when a host filter is present that doesn't match" do
+        dsl.set :filter, { host: 'ruby.local' }
+        SSHKit::Coordinator.expects(:new).with([]).returns(@coordinator)
+        dsl.on('server.local')
+      end
+
+    end
+
+  end
+
+  describe 'role_properties()' do
+
     before do
-      dsl.server 'example1.com', roles: %w{web}, active: true
-      dsl.server 'example2.com', roles: %w{web}
-      dsl.server 'example3.com', roles: %w{app web}, active: true
-      dsl.server 'example4.com', roles: %w{app}, primary: true
-      dsl.server 'example5.com', roles: %w{db}, no_release: true
-      @coordinator = mock('coordinator')
-      @coordinator.expects(:each).returns(nil)
-      ENV.delete 'ROLES'
-      ENV.delete 'HOSTS'
-
+      dsl.role :redis, %w[example1.com example2.com], redis: { port: 6379, type: :slave }
+      dsl.server 'example1.com', roles: %w{web}, active: true, web: { port: 80 }
+      dsl.server 'example2.com', roles: %w{web redis}, web: { port: 81 }, redis: { type: :master }
+      dsl.server 'example3.com', roles: %w{app}, primary: true
     end
 
-    it 'filters by role from the :filter variable' do
-      hosts = dsl.roles(:web)
-      all = dsl.roles(:all)
-      SSHKit::Coordinator.expects(:new).with(hosts).returns(@coordinator)
-      dsl.set :filter, { role: 'web' }
-      dsl.on(all)
+    it 'retrieves properties for a single role as a set' do
+      rps = dsl.role_properties(:app)
+      expect(rps).to eq(Set[{ hostname: 'example3.com', role: :app}])
     end
 
-    it 'filters by host and role from the :filter variable' do
-      all = dsl.roles(:all)
-      SSHKit::Coordinator.expects(:new).with([]).returns(@coordinator)
-      dsl.set :filter, { role: 'db', host: 'example3.com' }
-      dsl.on(all)
+    it 'retrieves properties for multiple roles as a set' do
+      rps = dsl.role_properties(:app, :web)
+      expect(rps).to eq(Set[{ hostname: 'example3.com', role: :app},{ hostname: 'example1.com', role: :web, port: 80},{ hostname: 'example2.com', role: :web, port: 81}])
     end
 
-    it 'filters from ENV[ROLES]' do
-      hosts = dsl.roles(:db)
-      all = dsl.roles(:all)
-      SSHKit::Coordinator.expects(:new).with(hosts).returns(@coordinator)
-      ENV['ROLES'] = 'db'
-      dsl.on(all)
+    it 'yields the properties for a single role' do
+      recipient = mock('recipient')
+      recipient.expects(:doit).with('example1.com', :redis, { port: 6379, type: :slave})
+      recipient.expects(:doit).with('example2.com', :redis, { port: 6379, type: :master})
+      dsl.role_properties(:redis) do |host, role, props|
+        recipient.doit(host, role, props)
+      end
     end
 
-    it 'filters from ENV[HOSTS]' do
-      hosts = dsl.roles(:db)
-      all = dsl.roles(:all)
-      SSHKit::Coordinator.expects(:new).with(hosts).returns(@coordinator)
-      ENV['HOSTS'] = 'example5.com'
-      dsl.on(all)
+    it 'yields the properties for multiple roles' do
+      recipient = mock('recipient')
+      recipient.expects(:doit).with('example1.com', :redis, { port: 6379, type: :slave})
+      recipient.expects(:doit).with('example2.com', :redis, { port: 6379, type: :master})
+      recipient.expects(:doit).with('example3.com', :app, nil)
+      dsl.role_properties(:redis, :app) do |host, role, props|
+        recipient.doit(host, role, props)
+      end
     end
 
-    it 'filters by ENV[HOSTS] && ENV[ROLES]' do
-      all = dsl.roles(:all)
-      SSHKit::Coordinator.expects(:new).with([]).returns(@coordinator)
-      ENV['HOSTS'] = 'example5.com'
-      ENV['ROLES'] = 'web'
-      dsl.on(all)
+    it 'yields the merged properties for multiple roles' do
+      recipient = mock('recipient')
+      recipient.expects(:doit).with('example1.com', :redis, { port: 6379, type: :slave})
+      recipient.expects(:doit).with('example2.com', :redis, { port: 6379, type: :master})
+      recipient.expects(:doit).with('example1.com', :web, { port: 80 })
+      recipient.expects(:doit).with('example2.com', :web, { port: 81 })
+      dsl.role_properties(:redis, :web) do |host, role, props|
+        recipient.doit(host, role, props)
+      end
     end
 
+    it 'honours a property filter before yielding' do
+      recipient = mock('recipient')
+      recipient.expects(:doit).with('example1.com', :redis, { port: 6379, type: :slave})
+      recipient.expects(:doit).with('example1.com', :web, { port: 80 })
+      dsl.role_properties(:redis, :web, select: :active) do |host, role, props|
+        recipient.doit(host, role, props)
+      end
+    end
   end
 
 end

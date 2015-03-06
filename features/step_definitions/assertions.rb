@@ -1,4 +1,5 @@
 Then(/^references in the remote repo are listed$/) do
+  expect(@output).to include('refs/heads/master')
 end
 
 Then(/^the shared path is created$/) do
@@ -22,13 +23,6 @@ Then(/^directories referenced in :linked_files are created in shared$/) do
   end
 end
 
-Then(/^the task will be successful$/) do
-end
-
-
-Then(/^the task will exit$/) do
-end
-
 Then(/^the repo is cloned$/) do
   run_vagrant_command(test_dir_exists(TestApp.repo_path))
 end
@@ -38,9 +32,8 @@ Then(/^the release is created$/) do
 end
 
 Then(/^file symlinks are created in the new release$/) do
-  pending
   TestApp.linked_files.each do |file|
-    run_vagrant_command(test_symlink_exists(TestApp.release_path.join(file)))
+    run_vagrant_command(test_symlink_exists(TestApp.current_path.join(file)))
   end
 end
 
@@ -93,6 +86,10 @@ Then(/^the task is successful$/) do
   expect(@success).to be true
 end
 
+Then(/^the task fails$/) do
+  expect(@success).to be_falsey
+end
+
 Then(/^the failure task will run$/) do
   failed = TestApp.shared_path.join('failed')
   run_vagrant_command(test_file_exists(failed))
@@ -109,6 +106,14 @@ When(/^an error is raised$/) do
   run_vagrant_command(test_file_exists(error))
 end
 
-Then(/contains "(.*?)" in the output/) do |expected|
+Then(/contains "([^"]*)" in the output/) do |expected|
   expect(@output).to include(expected)
+end
+
+Then(/the output matches "([^"]*)" followed by "([^"]*)"/) do |expected, followedby|
+  expect(@output).to match(/#{expected}.*#{followedby}/m)
+end
+
+Then(/doesn't contain "([^"]*)" in the output/) do |expected|
+  expect(@output).not_to include(expected)
 end

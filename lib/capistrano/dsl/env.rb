@@ -47,8 +47,16 @@ module Capistrano
         env.roles_for(names.flatten)
       end
 
+      def role_properties(*names, &block)
+        env.role_properties_for(names, &block)
+      end
+
       def release_roles(*names)
-        names << { exclude: :no_release } unless names.last.is_a? Hash
+        if names.last.is_a? Hash
+          names.last.merge!({ :exclude => :no_release })
+        else
+          names << { exclude: :no_release }
+        end
         roles(*names)
       end
 

@@ -4,9 +4,94 @@ Reverse Chronological Order:
 
 ## master
 
-https://github.com/capistrano/capistrano/compare/v3.2.1...HEAD
+https://github.com/capistrano/capistrano/compare/v3.4.0...HEAD
 
-* Disable loading stages configs on `cap -T`
+* Removed the post-install message (@Kriechi)
+
+* Minor changes
+  * Fix filtering behaviour when using literal hostnames in on() block (@townsen)
+
+## `3.4.0`
+
+https://github.com/capistrano/capistrano/compare/v3.3.5...v3.4.0
+
+* Fixed fetch revision for annotated git tags. (@igorsokolov)
+* Fixed updating roles when custom user or port is specified. (@ayastreb)
+* Disables statistics collection.
+
+* `bin/` is not suggested to be in `linked_dirs` anymore (@kirs)
+  * bin/ is often checked out into repo
+  * https://github.com/capistrano/bundler/issues/45#issuecomment-69349237
+
+* Bugfix:
+  * release_roles did not honour additional property filtering (@townsen)
+  * Refactored and simplified property filtering code (@townsen)
+
+* Breaking Changes
+  * Hosts with the same name are now consolidated into one irrespective of the
+    user and port. This allows multiple declarations of a server to be made safely.
+    The last declared properties will win. See capistrnorb.com Properties documentation
+    for details.
+  * Inside the on() block the host variable is now a copy of the host, so changes can be
+    made within the block (such as dynamically overriding the user) that will not persist.
+    This is very convenient for switching the SSH user temporarily to 'root' for example.
+
+* Minor changes
+  * Add role_properties() method (see capistrano.github.io PR for doc) (@townsen)
+  * Add equality syntax ( eg. port: 1234) for property filtering (@townsen)
+  * Add documentation regarding property filtering (@townsen)
+  * Clarify wording and recommendation in stage template. (@Kriechi)
+    * Both available syntaxes provide similar functionality, do not use both for the same server+role combination.
+  * Allow specification of repo_path using stage variable
+    default is as before (@townsen)
+
+## `3.3.5`
+
+https://github.com/capistrano/capistrano/compare/v3.3.4...v3.3.5
+
+* Fixed setting properties twice when creating new server. See [issue
+  #1214](https://github.com/capistrano/capistrano/issues/1214) (@ayastreb)
+
+## `3.3.4`
+
+https://github.com/capistrano/capistrano/compare/v3.3.3...v3.3.4
+
+* Minor changes:
+  * Rely on a newer version of capistrano-stats with better privacy (@leehambley)
+  * Fix cucumber spec for loading tasks from stage configs (@sponomarev)
+  * Minor documentation fixes (@deeeki, @seuros, @andresilveira)
+  * Spec improvements (@dimitrid, @sponomarev)
+  * Fix to CLI flags for git-ls-remote (@dimitrid)
+
+## `3.3.3`
+
+https://github.com/capistrano/capistrano/compare/v3.2.1...v3.3.3
+
+* Enhancement (@townsen)
+  * Added the variable `:repo_tree` which allows the specification of a sub-tree that
+    will be extracted from the repository. This is useful when deploying a project
+    that lives in a subdirectory of a larger repository.
+    Implemented only for git and hg.
+    If not defined then the behaviour is as previously and the whole repository is
+    extracted (subject to git-archive `.gitattributes` of course).
+
+* Enhancement (@townsen): Remove unnecessary entries from default backtrace
+
+    When the `--backtrace` (or `--trace`) command line option is not supplied
+    Rake lowers the noise level in exception backtraces by building
+    a regular expression containing all the system library paths and
+    using it to exclude backtrace entries that match.
+
+    This does not always go far enough, particularly in RVM environments when
+    many gem paths are added. This commit reverses that approach and _only_
+    include backtrace entries that fall within the Capfile and list of tasks
+    imported thereafter. This makes reading exceptions much easier on the eye.
+
+    If the full unexpurgated backtrace is required then the --backtrace
+    and --trace options supply it as before.
+
+* Disable loading stages configs on `cap -T` (@sponomarev)
+
 * Enhancements (@townsen)
   * Fix matching on hosts with custom ports or users set
   * Previously filtering would affect any generated configuration files so that
@@ -31,7 +116,6 @@ https://github.com/capistrano/capistrano/compare/v3.2.1...HEAD
 
   * See the documentation in the README.md file
 
-* Pushing again to trigger another build (I have a seemingly random build fail) (@townsen)
 * Enhancements (@townsen)
   * Added set_if_empty method to DSL to allow conditional setting
   * Altered standard Capistrano defaults so that they are not set
@@ -46,6 +130,7 @@ https://github.com/capistrano/capistrano/compare/v3.2.1...HEAD
 
 Breaking Changes:
   * By using Ruby's noecho method introduced in Ruby version 1.9.3, we dropped support for Ruby versions prior to 1.9.3. See [issue #878](https://github.com/capistrano/capistrano/issues/878) and [PR #1112](https://github.com/capistrano/capistrano/pull/1112) for more information. (@kaikuchn)
+  * Track (anonymous) statistics, see https://github.com/capistrano/stats. This breaks automated deployment on continuous integration servers until the `.capistrano/metrics` file is created (with content `full` to simulate a "yes") via the interactive prompt or manually.
 
 * Bug Fixes:
   * Fixed compatibility with FreeBSD tar (@robbertkl)
@@ -55,11 +140,14 @@ Breaking Changes:
   * Remove -v flag from mkdir call. (@caligo-mentis)
   * Capistrano now allows to customize `local_user` for revision log. (@sauliusgrigaitis)
   * Added tests for after/before hooks features (@juanibiapina, @miry)
+  * Added `--force` flag to `svn export` command to fix errors when the release directory already exists.
   * Improved the output of `cap --help`. (@mbrictson)
   * Cucumber suite now runs on the latest version of Vagrant (@tpett)
   * The `ask` method now supports the `echo: false` option. (@mbrictson, @kaikuchn)
+  * Cucumber scenario improvements (@bruno-)
   * Added suggestion to Capfile to use 'capistrano-passenger' gem, replacing suggestion in config/deploy.rb to re-implement 'deploy:restart' (@betesh)
   * Updated svn fetch_revision method to use `svnversion`
+  * `cap install` no longer overwrites existing files. (@dmarkow)
 
 ## `3.2.1`
 
@@ -76,6 +164,7 @@ https://github.com/capistrano/capistrano/compare/v3.2.0...v3.2.1
   * Changed asking question to more standard format (like common unix commandline tools) (@sponomarev)
   * Fixed typos in the README. (@sponomarev)
   * Added `keys` method to Configuration to allow introspection of configuration options. (@juanibiapina)
+  * Improve error message when git:check fails (raise instead of silently `exit 1`) (@mbrictson)
 
 ## `3.2.0`
 

@@ -18,6 +18,12 @@ module Capistrano
           expect(servers.count).to eq 1
         end
 
+        it 'handles de-duplification within roles with users' do
+          servers.add_role(:app, %w{1}, user: 'nick')
+          servers.add_role(:app, %w{1}, user: 'fred')
+          expect(servers.count).to eq 1
+        end
+
         it 'accepts instances of server objects' do
           servers.add_role(:app, [Capistrano::Configuration::Server.new('example.net'), 'example.com'])
           expect(servers.roles_for([:app]).length).to eq 2
@@ -134,7 +140,23 @@ module Capistrano
           servers.add_host('1', roles: [:app, 'web'], test: :value, user: 'root', port: 34)
           servers.add_host('1', roles: [:app, 'web'], test: :value, user: 'deployer', port: 34)
           servers.add_host('1', roles: [:app, 'web'], test: :value, user: 'deployer', port: 56)
-          expect(servers.count).to eq(8)
+          expect(servers.count).to eq(1)
+        end
+
+        describe "with a :user property" do
+
+          it 'sets the server ssh username' do
+            servers.add_host('1', roles: [:app, 'web'], user: 'nick')
+            expect(servers.count).to eq(1)
+            expect(servers.roles_for([:all]).first.user).to eq 'nick'
+          end
+
+          it 'overwrites the value of a user specified in the hostname' do
+            servers.add_host('brian@1', roles: [:app, 'web'], user: 'nick')
+            expect(servers.count).to eq(1)
+            expect(servers.roles_for([:all]).first.user).to eq 'nick'
+          end
+
         end
 
         it 'overwrites the value of a previously defined scalar property' do
@@ -162,6 +184,25 @@ module Capistrano
           servers.add_host('1', roles: [:b], endpoints: Set[222,333])
           expect(servers.count).to eq(1)
           expect(servers.roles_for([:b]).first.properties.endpoints).to eq(Set[123,222,333])
+        end
+
+        it 'adds array property value only ones for a new host' do
+          servers.add_host('2', roles: [:array_test], array_property: [1,2])
+          expect(servers.roles_for([:array_test]).first.properties.array_property).to eq [1,2]
+        end
+
+        it 'updates roles when custom user defined' do
+          servers.add_host('1', roles: ['foo'], user: 'custom')
+          servers.add_host('1', roles: ['bar'], user: 'custom')
+          expect(servers.roles_for([:foo]).first.hostname).to eq '1'
+          expect(servers.roles_for([:bar]).first.hostname).to eq '1'
+        end
+
+        it 'updates roles when custom port defined' do
+          servers.add_host('1', roles: ['foo'], port: 1234)
+          servers.add_host('1', roles: ['bar'], port: 1234)
+          expect(servers.roles_for([:foo]).first.hostname).to eq '1'
+          expect(servers.roles_for([:bar]).first.hostname).to eq '1'
         end
 
       end

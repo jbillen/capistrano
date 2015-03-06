@@ -5,7 +5,9 @@ rvm:
   - 1.9.3
   - rbx-2
 script: bundle exec rake spec
+install: bundle install --jobs=1
 cache: bundler
 branches:
   except:
     - legacy-v2
+sudo: false
