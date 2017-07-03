@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="aa2d1fbd-75f8-4bb3-a694-0974b1fa2fd7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/favicon.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/fonts/social_foundicons.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/fonts/social_foundicons.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/fonts/social_foundicons.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/BashStartupFiles1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/CapistranoAvatar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/CapistranoGraphic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/CapistranoGraphicWireframe.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/CapistranoLogo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/airbrussh-screenshot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/capistrano-logo-harrow-logo-c-primary-darker-w640.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/git-check-example-screenshot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/github-personal-api-token-page.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/images/successful-git-check-example-screenshot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.github/issue_template.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.github/pull_request_template.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.rubocop.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DEVELOPMENT.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Dangerfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RELEASING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UPGRADING-3.7.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/CNAME" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/Gemfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/Gemfile.lock" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_config.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_includes/carbon.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_includes/footer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_includes/google_tag_manager.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_includes/header.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_includes/metrics.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_includes/navigation.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_layouts/default.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_layouts/post.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_posts/2013-06-01-release-announcement.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/capistrano.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/dreamweaver.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/foundation.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/foundation.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/github.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/monokai.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/normalize.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/prism.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/social_foundicons.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/social_foundicons_ie7.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/css/syntax.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/console/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/custom-filters/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/custom-scm/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/filtering/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/host-filtering/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/ignoring/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/overriding-capistrano-tasks/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/properties/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/property-filtering/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/ptys/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/remote-file/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/role-filtering/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/ssh-kit/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/advanced-features/validation-of-variables/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/faq/how-can-i-access-stage-configuration-variables/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/faq/how-can-i-check-for-existing-remote-file/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/faq/how-can-i-get-capistrano-to-prompt-for-a-password/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/faq/how-can-i-set-capistrano-configuration-paths/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/faq/why-does-something-work-in-my-ssh-session-but-not-in-capistrano/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/authentication-and-authorisation/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/before-after/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/cold-start/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/configuration/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/flow/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/installation/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/local-tasks/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/preparing-your-application/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/rollbacks/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/structure/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/tasks/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/getting-started/user-input/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/harrow/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/overview/what-is-capistrano/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/third-party-plugins/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/documentation/upgrading/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/fonts/social_foundicons.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.alerts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.clearing.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.cookie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.dropdown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.forms.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.interchange.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.joyride.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.magellan.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.orbit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.placeholder.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.reveal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.section.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.tooltips.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/foundation/foundation.topbar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/jquery-1.7.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/jquery.cookie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/jquery.githubRepoWidget.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/prism-ruby-language.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/prism.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/prism.ruby.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/js/rainbow-custom.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/features/doctor.feature" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/features/stage_failure.feature" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/features/subdirectory.feature" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/empty_filter.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/host_filter.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/null_filter.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/plugin_installer.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/role_filter.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/scm_resolver.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/validated_variables.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/variables.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/doctor.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/doctor/environment_doctor.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/doctor/gems_doctor.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/doctor/output_helpers.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/doctor/servers_doctor.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/doctor/variables_doctor.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/immutable_task.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/plugin.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/proc_helpers.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/scm/git.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/scm/hg.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/scm/plugin.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/scm/svn.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/scm/tasks/hg.rake" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/scm/tasks/svn.rake" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capistrano/tasks/doctor.rake" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/empty_filter_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/host_filter_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/null_filter_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/plugin_installer_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/role_filter_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/scm_resolver_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/doctor/environment_doctor_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/doctor/gems_doctor_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/doctor/output_helpers_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/doctor/servers_doctor_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/doctor/variables_doctor_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/immutable_task_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/plugin_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/scm/git_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/scm/hg_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/capistrano/scm/svn_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/support/tasks/plugin.rake" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/features/remote_file_task.feature" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/capistrano/git.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/capistrano/hg.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/capistrano/svn.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/capistrano/tasks/hg.rake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/capistrano/tasks/svn.rake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/lib/capistrano/git_spec.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/lib/capistrano/hg_spec.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/lib/capistrano/svn_spec.rb" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/capistrano/tasks/git.rake" afterPath="$PROJECT_DIR$/lib/capistrano/scm/tasks/git.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE.txt" afterPath="$PROJECT_DIR$/LICENSE.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Rakefile" afterPath="$PROJECT_DIR$/Rakefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/cap" afterPath="$PROJECT_DIR$/bin/cap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/capistrano.gemspec" afterPath="$PROJECT_DIR$/capistrano.gemspec" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/deploy.feature" afterPath="$PROJECT_DIR$/features/deploy.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/installation.feature" afterPath="$PROJECT_DIR$/features/installation.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/assertions.rb" afterPath="$PROJECT_DIR$/features/step_definitions/assertions.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/cap_commands.rb" afterPath="$PROJECT_DIR$/features/step_definitions/cap_commands.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/setup.rb" afterPath="$PROJECT_DIR$/features/step_definitions/setup.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/support/env.rb" afterPath="$PROJECT_DIR$/features/support/env.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/support/remote_command_helpers.rb" afterPath="$PROJECT_DIR$/features/support/remote_command_helpers.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/support/vagrant_helpers.rb" afterPath="$PROJECT_DIR$/features/support/vagrant_helpers.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Capfile" afterPath="$PROJECT_DIR$/lib/Capfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/all.rb" afterPath="$PROJECT_DIR$/lib/capistrano/all.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/application.rb" afterPath="$PROJECT_DIR$/lib/capistrano/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/configuration.rb" afterPath="$PROJECT_DIR$/lib/capistrano/configuration.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/configuration/filter.rb" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/filter.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/configuration/question.rb" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/question.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/configuration/server.rb" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/server.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/configuration/servers.rb" afterPath="$PROJECT_DIR$/lib/capistrano/configuration/servers.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/defaults.rb" afterPath="$PROJECT_DIR$/lib/capistrano/defaults.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/deploy.rb" afterPath="$PROJECT_DIR$/lib/capistrano/deploy.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/dotfile.rb" afterPath="$PROJECT_DIR$/lib/capistrano/dotfile.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/dsl.rb" afterPath="$PROJECT_DIR$/lib/capistrano/dsl.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/dsl/env.rb" afterPath="$PROJECT_DIR$/lib/capistrano/dsl/env.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/dsl/paths.rb" afterPath="$PROJECT_DIR$/lib/capistrano/dsl/paths.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/dsl/stages.rb" afterPath="$PROJECT_DIR$/lib/capistrano/dsl/stages.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/dsl/task_enhancements.rb" afterPath="$PROJECT_DIR$/lib/capistrano/dsl/task_enhancements.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/framework.rb" afterPath="$PROJECT_DIR$/lib/capistrano/framework.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/i18n.rb" afterPath="$PROJECT_DIR$/lib/capistrano/i18n.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/install.rb" afterPath="$PROJECT_DIR$/lib/capistrano/install.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/scm.rb" afterPath="$PROJECT_DIR$/lib/capistrano/scm.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/setup.rb" afterPath="$PROJECT_DIR$/lib/capistrano/setup.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/tasks/console.rake" afterPath="$PROJECT_DIR$/lib/capistrano/tasks/console.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/tasks/deploy.rake" afterPath="$PROJECT_DIR$/lib/capistrano/tasks/deploy.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/tasks/framework.rake" afterPath="$PROJECT_DIR$/lib/capistrano/tasks/framework.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/tasks/install.rake" afterPath="$PROJECT_DIR$/lib/capistrano/tasks/install.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/templates/Capfile" afterPath="$PROJECT_DIR$/lib/capistrano/templates/Capfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/templates/deploy.rb.erb" afterPath="$PROJECT_DIR$/lib/capistrano/templates/deploy.rb.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/templates/stage.rb.erb" afterPath="$PROJECT_DIR$/lib/capistrano/templates/stage.rb.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/upload_task.rb" afterPath="$PROJECT_DIR$/lib/capistrano/upload_task.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/version.rb" afterPath="$PROJECT_DIR$/lib/capistrano/version.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/version_validator.rb" afterPath="$PROJECT_DIR$/lib/capistrano/version_validator.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/integration/dsl_spec.rb" afterPath="$PROJECT_DIR$/spec/integration/dsl_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/integration_spec_helper.rb" afterPath="$PROJECT_DIR$/spec/integration_spec_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/application_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/application_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/configuration/filter_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/filter_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/configuration/question_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/question_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/configuration/server_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/server_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/configuration/servers_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration/servers_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/configuration_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/configuration_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/dsl/paths_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/dsl/paths_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/dsl/task_enhancements_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/dsl/task_enhancements_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/dsl_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/dsl_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/scm_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/scm_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/upload_task_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/upload_task_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano/version_validator_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano/version_validator_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/lib/capistrano_spec.rb" afterPath="$PROJECT_DIR$/spec/lib/capistrano_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/spec_helper.rb" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/Vagrantfile" afterPath="$PROJECT_DIR$/spec/support/Vagrantfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/tasks/database.rake" afterPath="$PROJECT_DIR$/spec/support/tasks/database.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/tasks/fail.rake" afterPath="$PROJECT_DIR$/spec/support/tasks/fail.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/tasks/failed.rake" afterPath="$PROJECT_DIR$/spec/support/tasks/failed.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/tasks/root.rake" afterPath="$PROJECT_DIR$/spec/support/tasks/root.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/test_app.rb" afterPath="$PROJECT_DIR$/spec/support/test_app.rb" />
+    </list>
+    <ignored path="capistrano.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="capistrano" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="git.rake" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/capistrano/scm/tasks/git.rake">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="44" column="11" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deploy.rake" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/deploy.rake">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="193" column="45" selection-start-line="193" selection-start-column="2" selection-end-line="193" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/lib/capistrano/scm/tasks/git.rake" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2982" />
+    <option name="y" value="-324" />
+    <option name="width" value="1636" />
+    <option name="height" value="1360" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capistrano" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tasks" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aa2d1fbd-75f8-4bb3-a694-0974b1fa2fd7" name="Default" comment="" />
+      <created>1499089802212</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1499089802212</updated>
+      <workItem from="1499089803349" duration="2530000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2530000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="2982" y="-324" width="1636" height="1360" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/git.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="60" column="55" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/capistrano/deploy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/capistrano/scm.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/install.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/capistrano/scm/tasks/git.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="11" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/deploy.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="193" column="45" selection-start-line="193" selection-start-column="2" selection-end-line="193" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

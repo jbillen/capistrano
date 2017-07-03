@@ -1,6 +1,6 @@
-require 'set'
-require 'capistrano/configuration'
-require 'capistrano/configuration/filter'
+require "set"
+require "capistrano/configuration"
+require "capistrano/configuration/filter"
 
 module Capistrano
   class Configuration
@@ -9,23 +9,28 @@ module Capistrano
 
       def add_host(host, properties={})
         new_host = Server[host]
-        if server = servers.find { |s| s.matches? new_host }
-          server.user = new_host.user if new_host.user
-          server.port = new_host.port if new_host.port
-          server.with(properties)
+        new_host.port = properties[:port] if properties.key?(:port)
+        # This matching logic must stay in sync with `Server#matches?`.
+        key = ServerKey.new(new_host.hostname, new_host.port)
+        existing = servers_by_key[key]
+        if existing
+          existing.user = new_host.user if new_host.user
+          existing.with(properties)
         else
-          servers << new_host.with(properties)
+          servers_by_key[key] = new_host.with(properties)
         end
       end
 
+      # rubocop:disable Security/MarshalLoad
       def add_role(role, hosts, options={})
         options_deepcopy = Marshal.dump(options.merge(roles: role))
         Array(hosts).each { |host| add_host(host, Marshal.load(options_deepcopy)) }
       end
+      # rubocop:enable Security/MarshalLoad
 
       def roles_for(names)
         options = extract_options(names)
-        s = Filter.new(:role, names).filter(servers)
+        s = Filter.new(:role, names).filter(servers_by_key.values)
         s.select { |server| server.select?(options) }
       end
 
@@ -38,12 +43,12 @@ module Capistrano
               if block_given?
                 yield host, role, props
               else
-                rps << (props || {}).merge( role: role, hostname: host.hostname )
+                rps << (props || {}).merge(role: role, hostname: host.hostname)
               end
             end
           end
         end
-        block_given? ? nil: rps
+        block_given? ? nil : rps
       end
 
       def fetch_primary(role)
@@ -52,13 +57,15 @@ module Capistrano
       end
 
       def each
-        servers.each { |server| yield server }
+        servers_by_key.values.each { |server| yield server }
       end
 
       private
 
-      def servers
-        @servers ||= []
+      ServerKey = Struct.new(:hostname, :port)
+
+      def servers_by_key
+        @servers_by_key ||= {}
       end
 
       def extract_options(array)

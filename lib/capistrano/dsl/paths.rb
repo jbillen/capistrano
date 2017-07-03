@@ -1,8 +1,7 @@
-require 'pathname'
+require "pathname"
 module Capistrano
   module DSL
     module Paths
-
       def deploy_to
         fetch(:deploy_to)
       end
@@ -12,15 +11,15 @@ module Capistrano
       end
 
       def current_path
-        deploy_path.join('current')
+        deploy_path.join(fetch(:current_directory, "current"))
       end
 
       def releases_path
-        deploy_path.join('releases')
+        deploy_path.join("releases")
       end
 
       def release_path
-        fetch(:release_path, current_path)
+        fetch(:release_path) { current_path }
       end
 
       def set_release_path(timestamp=now)
@@ -29,40 +28,27 @@ module Capistrano
       end
 
       def stage_config_path
-        Pathname.new fetch(:stage_config_path, 'config/deploy')
+        Pathname.new fetch(:stage_config_path, "config/deploy")
       end
 
       def deploy_config_path
-        Pathname.new fetch(:deploy_config_path, 'config/deploy.rb')
+        Pathname.new fetch(:deploy_config_path, "config/deploy.rb")
       end
 
       def repo_url
-        require 'cgi'
-        require 'uri'
-        if fetch(:git_http_username) and fetch(:git_http_password)
-          URI.parse(fetch(:repo_url)).tap do |repo_uri|
-            repo_uri.user     = fetch(:git_http_username)
-            repo_uri.password = CGI.escape(fetch(:git_http_password))
-          end.to_s
-        elsif fetch(:git_http_username)
-          URI.parse(fetch(:repo_url)).tap do |repo_uri|
-            repo_uri.user = fetch(:git_http_username)
-          end.to_s
-        else
-          fetch(:repo_url)
-        end
+        fetch(:repo_url)
       end
 
       def repo_path
-        Pathname.new(fetch(:repo_path, ->(){deploy_path.join('repo')}))
+        Pathname.new(fetch(:repo_path, ->() { deploy_path.join("repo") }))
       end
 
       def shared_path
-        deploy_path.join('shared')
+        deploy_path.join("shared")
       end
 
       def revision_log
-        deploy_path.join('revisions.log')
+        deploy_path.join("revisions.log")
       end
 
       def now
@@ -96,7 +82,7 @@ module Capistrano
       end
 
       def map_dirnames(paths)
-        paths.map { |path| path.dirname }
+        paths.map(&:dirname).uniq
       end
     end
   end

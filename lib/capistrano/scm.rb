@@ -1,5 +1,4 @@
 module Capistrano
-
   # Base class for SCM strategy providers.
   #
   # @abstract
@@ -25,7 +24,7 @@ module Capistrano
 
     # Call test in context
     def test!(*args)
-      context.test *args
+      context.test(*args)
     end
 
     # The repository URL according to the context
@@ -59,9 +58,7 @@ module Capistrano
     # @return [Boolean]
     #
     def test
-      raise NotImplementedError.new(
-        "Your SCM strategy module should provide a #test method"
-      )
+      raise NotImplementedError, "Your SCM strategy module should provide a #test method"
     end
 
     # @abstract
@@ -72,9 +69,7 @@ module Capistrano
     # @return [Boolean]
     #
     def check
-      raise NotImplementedError.new(
-        "Your SCM strategy module should provide a #check method"
-      )
+      raise NotImplementedError, "Your SCM strategy module should provide a #check method"
     end
 
     # @abstract
@@ -84,9 +79,7 @@ module Capistrano
     # @return void
     #
     def clone
-      raise NotImplementedError.new(
-        "Your SCM strategy module should provide a #clone method"
-      )
+      raise NotImplementedError, "Your SCM strategy module should provide a #clone method"
     end
 
     # @abstract
@@ -96,9 +89,7 @@ module Capistrano
     # @return void
     #
     def update
-      raise NotImplementedError.new(
-        "Your SCM strategy module should provide a #update method"
-      )
+      raise NotImplementedError, "Your SCM strategy module should provide a #update method"
     end
 
     # @abstract
@@ -108,9 +99,7 @@ module Capistrano
     # @return void
     #
     def release
-      raise NotImplementedError.new(
-        "Your SCM strategy module should provide a #release method"
-      )
+      raise NotImplementedError, "Your SCM strategy module should provide a #release method"
     end
 
     # @abstract
@@ -120,9 +109,7 @@ module Capistrano
     # @return void
     #
     def fetch_revision
-      raise NotImplementedError.new(
-        "Your SCM strategy module should provide a #fetch_revision method"
-      )
+      raise NotImplementedError, "Your SCM strategy module should provide a #fetch_revision method"
     end
   end
 end

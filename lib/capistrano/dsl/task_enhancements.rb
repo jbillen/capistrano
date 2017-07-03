@@ -1,4 +1,4 @@
-require 'capistrano/upload_task'
+require "capistrano/upload_task"
 
 module Capistrano
   module TaskEnhancements
@@ -9,15 +9,12 @@ module Capistrano
 
     def after(task, post_task, *args, &block)
       Rake::Task.define_task(post_task, *args, &block) if block_given?
-      post_task = Rake::Task[post_task]
-      Rake::Task[task].enhance do
-        post_task.invoke
+      task = Rake::Task[task]
+      task.enhance do
+        post = Rake.application.lookup(post_task, task.scope)
+        raise ArgumentError, "Task #{post_task.inspect} not found" unless post
+        post.invoke
       end
-    end
-
-    def remote_file(task)
-      target_roles = task.delete(:roles) { :all }
-      define_remote_file_task(task, target_roles)
     end
 
     def define_remote_file_task(task, target_roles)
@@ -31,7 +28,6 @@ module Capistrano
             upload! File.open(prerequisite_file), file
           end
         end
-
       end
     end
 
@@ -54,13 +50,12 @@ module Capistrano
 
     def exit_deploy_because_of_exception(ex)
       warn t(:deploy_failed, ex: ex.message)
-      invoke 'deploy:failed'
+      invoke "deploy:failed"
       exit(false)
     end
 
     def deploying?
       fetch(:deploying, false)
     end
-
   end
 end

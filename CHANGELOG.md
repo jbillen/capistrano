@@ -1,15 +1,276 @@
 # Capistrano 3.x Changelog
 
-Reverse Chronological Order:
+All notable changes to this project will be documented in this file, in reverse chronological order.
+
+**Capistrano follows a modified version of [SemVer](http://semver.org)**, similar to the Ruby on Rails project. For a `X.Y.Z` release:
+
+* `Z` indicates bug fixes only; no breaking changes and no new features, except as necessary for security fixes.
+* `Y` is bumped when we add new features. Occasionally a `Y` release may include small breaking changes. We will notify via CHANGELOG entries and/or deprecation notices if there are breaking changes.
+* `X` is incremented for significant breaking changes. This is reserved for special occasions, like a complete rewrite.
+
+**Capistrano uses a six-week release cadence.** Every six weeks, give or take, any changes in master will be published as a new rubygems version. If you'd like to use a feature or fix that is in master and you can't wait for the next planned release, put this in your project's Gemfile to use the master branch directly:
+
+```ruby
+gem "capistrano", :github => "capistrano/capistrano"
+```
 
 ## master
 
-https://github.com/capistrano/capistrano/compare/v3.4.0...HEAD
+https://github.com/capistrano/capistrano/compare/v3.8.1...HEAD
 
+* Your contribution here!
+
+## `3.8.2` (2017-06-16)
+
+https://github.com/capistrano/capistrano/compare/v3.8.1...v3.8.2
+
+### Breaking changes:
+
+* None
+
+### Other changes:
+
+* [#1882](https://github.com/capistrano/capistrano/pull/1882): Explain where to add new Capfile lines in scm deprecation warning - [@robd](https://github.com/robd)
+
+## `3.8.1` (2017-04-21)
+
+https://github.com/capistrano/capistrano/compare/v3.8.0...v3.8.1
+
+### Breaking changes:
+
+* None
+
+### Fixes:
+
+* [#1867](https://github.com/capistrano/capistrano/pull/1867): Allow `cap -T` to run without Capfile present - [@mattbrictson](https://github.com/mattbrictson)
+
+## `3.8.0` (2017-03-10)
+
+https://github.com/capistrano/capistrano/compare/v3.7.2...v3.8.0
+
+### Minor breaking changes:
+
+* [#1846](https://github.com/capistrano/capistrano/pull/1846): add_host - When this method has already been called once for a given host and it is called a second time with a port, a new host will be added. Previously, the first host would have been updated. [(@dbenamy)](https://github.com/dbenamy)
+
+### New features:
+
+* [#1860](https://github.com/capistrano/capistrano/pull/1860): Allow cap to be run within subdir and still work - [@mattbrictson](https://github.com/mattbrictson)
+
+### Fixes:
+
+* [#1835](https://github.com/capistrano/capistrano/pull/1835): Stopped printing parenthesis in ask prompt if no default or nil was passed as argument [(@chamini2)](https://github.com/chamini2)
+* [#1840](https://github.com/capistrano/capistrano/pull/1840): Git plugin: shellescape git_wrapper_path [(@olleolleolle)](https://github.com/olleolleolle)
+* [#1843](https://github.com/capistrano/capistrano/pull/1843): Properly shell escape git:wrapper steps - [@mattbrictson](https://github.com/mattbrictson)
+* [#1846](https://github.com/capistrano/capistrano/pull/1846): Defining a role is now O(hosts) instead of O(hosts^2) [(@dbenamy)](https://github.com/dbenamy)
+* Run `svn switch` to work with svn branches if repo_url is changed
+* [#1856](https://github.com/capistrano/capistrano/pull/1856): Fix hg repo_tree implementation - [@mattbrictson](https://github.com/mattbrictson)
+* [#1857](https://github.com/capistrano/capistrano/pull/1857): Don't emit doctor warning when repo_tree is set - [@mattbrictson](https://github.com/mattbrictson)
+
+### Other changes:
+
+* [capistrano-harrow#4](https://github.com/harrowio/capistrano-harrow/issues/4): Drop dependency on `capistrano-harrow` gem. Gem can still be installed separately [(@leehambley)](https://github.com/leehambley)
+* [#1859](https://github.com/capistrano/capistrano/pull/1859): Move git-specific repo_url logic into git plugin - [@mattbrictson](https://github.com/mattbrictson)
+* [#1858](https://github.com/capistrano/capistrano/pull/1858): Unset the :scm variable when an SCM plugin is used - [@mattbrictson](https://github.com/mattbrictson)
+
+## `3.7.2` (2017-01-27)
+
+https://github.com/capistrano/capistrano/compare/v3.7.1...v3.7.2
+
+### Potentially breaking changes:
+
+* None
+
+### Other changes:
+
+* Suppress log messages of `git ls-remote` by filtering remote refs (@aeroastro)
+* The Git SCM now allows the repo_url to be changed without manually wiping out the mirror on each target host first (@javanthropus)
+
+## `3.7.1` (2016-12-16)
+
+https://github.com/capistrano/capistrano/compare/v3.7.0...v3.7.1
+
+### Potentially breaking changes:
+
+* None
+
+### Fixes:
+
+* Fixed a bug with mercurial deploys failing due to an undefined variable
+
+## `3.7.0` (2016-12-10)
+
+https://github.com/capistrano/capistrano/compare/v3.6.1...v3.7.0
+
+*Note: These release notes include all changes since 3.6.1, including the changes that were first published in 3.7.0.beta1.*
+
+### Deprecations:
+
+* The `set :scm, ...` mechanism is now deprecated in favor of a new SCM plugin system. See the [UPGRADING-3.7](UPGRADING-3.7.md) document for details
+
+### Potentially breaking changes:
+
+* The `:git_strategy`, `:hg_strategy`, and `:svn_strategy` settings have been removed with no replacement. If you have been using these to customize Capistrano's SCM behavior, you will need to rewrite your customization using the [new plugin system](http://capistranorb.com/documentation/advanced-features/custom-scm/)
+* `remote_file` feature has been removed and is no longer available to use @SaiVardhan
+
+### New features:
+
+* The `tar` used by the Git SCM now honors the SSHKit command map, allowing an alternative tar binary to be used (e.g. gtar) #1787 (@caius)
+* Add support for custom on-filters [#1776](https://github.com/capistrano/capistrano/issues/1776)
+
+### Fixes:
+
+* Fix test suite to work with Mocha 1.2.0 (@caius)
+* Fix bug where host_filter and role_filter were overly greedy [#1766](https://github.com/capistrano/capistrano/issues/1766) (@cseeger-epages)
+* Fix the removal of old releases `deploy:cleanup`. Logic is changed because of unreliable modification times on folders. Removal of directories is now decided by sorting on folder names (name is generated from current datetime format YmdHis). Cleanup is skipped, and a warning is given when a folder name is in a different format
+
+## `3.7.0.beta1` (2016-11-02)
+
+https://github.com/capistrano/capistrano/compare/v3.6.1...v3.7.0.beta1
+
+### Deprecations:
+
+* The `set :scm, ...` mechanism is now deprecated in favor of a new SCM plugin
+system. See the [UPGRADING-3.7](UPGRADING-3.7.md) document for details.
+
+### Potentially breaking changes:
+
+* The `:git_strategy`, `:hg_strategy`, and `:svn_strategy` settings have been
+removed with no replacement. If you have been using these to customize
+Capistrano's SCM behavior, you will need to rewrite your customization using
+the [new plugin system](http://capistranorb.com/documentation/advanced-features/custom-scm/).
+* `remote_file` feature has been removed and is no longer available to use @SaiVardhan
+
+### New features:
+
+* The `tar` used by the Git SCM now honors the SSHKit command map, allowing an alternative tar binary to be used (e.g. gtar) #1787 (@caius)
+
+### Fixes:
+
+* Fix test suite to work with Mocha 1.2.0 (@caius)
+* Fix bug where host_filter and role_filter were overly greedy [#1766](https://github.com/capistrano/capistrano/issues/1766) (@cseeger-epages)
+
+## `3.6.1` (2016-08-23)
+
+https://github.com/capistrano/capistrano/compare/v3.6.0...v3.6.1
+
+### Fixes:
+
+* Restore compatibility with older versions of Rake (< 11.0.0) (@troelskn)
+* Fix `NoMethodError: undefined method gsub` when setting `:application` to a Proc. The original fix released in 3.6.0 worked for values specified with blocks, but not for those specified with procs or lambdas (the latter syntax is much more common). [#1681](https://github.com/capistrano/capistrano/issues/1681)
+* Fix a bug where deploy would fail if `:local_user` contained a space; spaces are now replaced with dashes when computing the git-ssh suffix. (@will_in_wi)
+
+## `3.6.0` (2016-07-26)
+
+https://github.com/capistrano/capistrano/compare/v3.5.0...v3.6.0
+
+Thank you to the many first-time contributors from the Capistrano community who
+helped with this release!
+
+### Deprecations:
+
+  * Deprecate `remote_file` feature (will be removed in Capistrano 3.7.0) (@lebedev-yury)
+  * Deprecate `:git_strategy`, `:hg_strategy`, and `:svn_strategy` variables.
+    These will be completely removed in 3.7.0.
+  * Added warning about future deprecation of reinvocation behaviour (@troelskn)
+
+Refer to the [Capistrano 3.7.0 upgrade document](UPGRADING-3.7.md) if you are
+affected by these deprecations.
+
+### New features:
+
+  * Added a `doctor:servers` subtask that outputs a summary of servers, roles & properties (@irvingwashington)
+  * Make path to git wrapper script configurable (@thickpaddy)
+  * Make name of current directory configurable via configuration variable `:current_directory` (@websi)
+  * It is now possible to rollback to a specific release using the
+    `ROLLBACK_RELEASE` environment variable.
+    [#1155](https://github.com/capistrano/capistrano/issues/1155) (@lanrion)
+
+### Fixes:
+
+  * `doctor` no longer erroneously warns that `:git_strategy` and other SCM options are "unrecognized" (@shanesaww)
+  * Fix `NoMethodError: undefined method gsub` when setting `:application` to a
+    Proc. [#1681](https://github.com/capistrano/capistrano/issues/1681)
+    (@mattbrictson)
+
+### Other changes:
+
+  * Raise a better error when an ‘after’ hook isn’t found (@jdelStrother)
+  * Change git wrapper path to work better with multiple users (@thickpaddy)
+  * Restrict the uploaded git wrapper script permissions to 700 (@irvingwashington)
+  * Add `net-ssh` gem version to `doctor:gems` output (@lebedev-yury)
+
+## `3.5.0`
+
+https://github.com/capistrano/capistrano/compare/v3.4.1...v3.5.0
+
+**You'll notice a big cosmetic change in this release: the default logging
+format has been changed to
+[Airbrussh](https://github.com/mattbrictson/airbrussh).** For more details on
+what Airbrussh does
+and how to configure it, visit the
+[Airbrussh README](https://github.com/mattbrictson/airbrussh#readme).
+
+* To opt out of the new format, simply add `set :format, :pretty` to switch to
+  the old default of Capistrano 3.4.0 and earlier.
+* If you are already an Airbrussh user, note that the default configuration has
+  changed, and the syntax for configuring Airbrussh has changed as well.
+  [This simple upgrade guide](https://github.com/mattbrictson/airbrussh/blob/master/UPGRADING-CAP-3.5.md)
+  will walk you through it.
+
+### Potentially breaking changes:
+
+* Drop support for Ruby 1.9.3 (Capistrano does no longer work with 1.9.3)
+* Git version 1.6.3 or greater is now required
+* Remove 'vendor/bundle' from default :linked_dirs (@ojab)
+* Old versions of SSHKit (before 1.9.0) are no longer supported
+* SHA1 hash of current git revision written to REVISION file is no longer abbreviated
+* Ensure task invocation within after hooks is namespace aware, which may require
+  you to change how your `after` hooks are declared in some cases; see
+  [#1652](https://github.com/capistrano/capistrano/issues/1652) for an example
+  and how to correct it (@thickpaddy)
+* Validation of the `:application` variable forbids special characters such as slash,
+  this may be a breaking change in case that you rely on using a `/` in your application
+  name to deploy from a sub directory.
+
+### New features:
+
+* Added a `doctor` task that outputs helpful troubleshooting information. Try it like this: `cap production doctor`. (@mattbrictson)
+* Added a `dry_run?` helper method
+* `remove` DSL method for removing values like from arrays like `linked_dirs`
+* `append` DSL method for pushing values like `linked_dirs`
+  [#1447](https://github.com/capistrano/capistrano/pull/1447),
+  [#1586](https://github.com/capistrano/capistrano/pull/1586)
+* Added support for git shallow clone
+* Added new runtime option `--print-config-variables` that inspect all defined config variables in order to assist development of new capistrano tasks (@gerardo-navarro)
+* Prune dead tracking branches from git repositories while updating
+* Added options to set username and password when using Subversion as SCM (@dsthode)
+* Allow after() to refer to tasks that have not been loaded yet (@jcoglan)
+* Allow use "all" as string for server filtering (@theist)
+* Print a warning and abort if "load:defaults" is erroneously invoked after
+  capistrano is already loaded, e.g. when a plugin is loaded in `deploy.rb`
+  instead of `Capfile`. (@mattbrictson)
+* Added option to set specific revision when using Subversion as SCM (@marcovtwout)
+* Deduplicate list of linked directories
+* Integration with Harrow.io (See http://capistranorb.com/documentation/harrow/) when running `cap install`
+* Added validate method to DSL to allow validation of certain values (@Kriechi)
+    * validate values before assignment inside of `set(:key, value)`
+    * should raise a `Capistrano::ValidationError` if invalid
+* Added default validation for Capistrano-specific variables (@Kriechi)
+
+### Fixes:
+
+* Capistrano is now fully-compatible with Rake 11.0. (@mattbrictson)
+* Fix filtering behaviour when using literal hostnames in on() block (@townsen)
+* Allow dot in :application name (@marcovtwout)
+* Fixed git-ssh permission error (@spight)
+
+### Other changes:
+
+* Internal Rubocop cleanups.
 * Removed the post-install message (@Kriechi)
-
-* Minor changes
-  * Fix filtering behaviour when using literal hostnames in on() block (@townsen)
+* Refactor `Configuration::Filter` to use filtering strategies instead
+  of case statements (@cshaffer)
+* Clean up rubocop lint warnings (@cshaffer)
 
 ## `3.4.0`
 
@@ -30,7 +291,7 @@ https://github.com/capistrano/capistrano/compare/v3.3.5...v3.4.0
 * Breaking Changes
   * Hosts with the same name are now consolidated into one irrespective of the
     user and port. This allows multiple declarations of a server to be made safely.
-    The last declared properties will win. See capistrnorb.com Properties documentation
+    The last declared properties will win. See capistranorb.com Properties documentation
     for details.
   * Inside the on() block the host variable is now a copy of the host, so changes can be
     made within the block (such as dynamically overriding the user) that will not persist.

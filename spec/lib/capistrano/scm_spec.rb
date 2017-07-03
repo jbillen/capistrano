@@ -1,13 +1,13 @@
-require 'spec_helper'
+require "spec_helper"
 
-require 'capistrano/scm'
+require "capistrano/scm"
 
 module RaiseNotImplementedMacro
   def raise_not_implemented_on(method)
     it "should raise NotImplemented on #{method}" do
-      expect {
+      expect do
         subject.send(method)
-      }.to raise_error(NotImplementedError)
+      end.to raise_error(NotImplementedError)
     end
   end
 end
@@ -26,7 +26,7 @@ module BlindStrategy; end
 
 module Capistrano
   describe SCM do
-    let(:context) { Class.new.new }
+    let(:context) { mock }
 
     describe "#initialize" do
       subject { Capistrano::SCM.new(context, DummyStrategy) }
@@ -63,8 +63,8 @@ module Capistrano
 
       describe "#release_path" do
         it "should return the release path according to the context" do
-          context.expects(:release_path).returns('/path/to/nowhere')
-          expect(subject.release_path).to eq('/path/to/nowhere')
+          context.expects(:release_path).returns("/path/to/nowhere")
+          expect(subject.release_path).to eq("/path/to/nowhere")
         end
       end
 
@@ -101,4 +101,3 @@ module Capistrano
     end
   end
 end
-

@@ -1,9 +1,8 @@
 module Capistrano
   class Application < Rake::Application
-
     def initialize
       super
-      @rakefiles = %w{capfile Capfile capfile.rb Capfile.rb} << capfile
+      @rakefiles = %w{capfile Capfile capfile.rb Capfile.rb}
     end
 
     def name
@@ -21,11 +20,11 @@ module Capistrano
         switch =~ /--#{Regexp.union(not_applicable_to_capistrano)}/
       end
 
-      super.push(version, dry_run, roles, hostfilter)
+      super.push(version, dry_run, roles, hostfilter, print_config_variables)
     end
 
     def handle_options
-      options.rakelib = ['rakelib']
+      options.rakelib = ["rakelib"]
       options.trace_output = $stderr
 
       OptionParser.new do |opts|
@@ -48,10 +47,9 @@ module Capistrano
         end
 
         standard_rake_options.each { |args| opts.on(*args) }
-        opts.environment('RAKEOPT')
+        opts.environment("RAKEOPT")
       end.parse!
     end
-
 
     def top_level_tasks
       if tasks_without_stage_dependency.include?(@top_level_tasks.first)
@@ -63,13 +61,10 @@ module Capistrano
 
     def display_error_message(ex)
       unless options.backtrace
-        if loc = Rake.application.find_rakefile_location
-          whitelist = (@imported.dup << loc[0]).map{|f| File.absolute_path(f, loc[1])}
-          pattern = %r@^(?!#{whitelist.map{|p| Regexp.quote(p)}.join('|')})@
-          Rake.application.options.suppress_backtrace_pattern = pattern
-        end
+        Rake.application.options.suppress_backtrace_pattern = backtrace_pattern if backtrace_pattern
         trace "(Backtrace restricted to imported tasks)"
       end
+
       super
     end
 
@@ -81,60 +76,78 @@ module Capistrano
       end
     end
 
+    # allows the `cap install` task to load without a capfile
+    def find_rakefile_location
+      if (location = super).nil?
+        [capfile, Dir.pwd]
+      else
+        location
+      end
+    end
+
     private
 
+    def backtrace_pattern
+      loc = Rake.application.find_rakefile_location
+      return unless loc
+
+      whitelist = (@imported.dup << loc[0]).map { |f| File.absolute_path(f, loc[1]) }
+      /^(?!#{whitelist.map { |p| Regexp.quote(p) }.join('|')})/
+    end
+
     def load_imports
-      if options.show_tasks
-        invoke 'load:defaults'
-        set(:stage, '')
+      if options.show_tasks && Rake::Task.task_defined?("load:defaults")
+        invoke "load:defaults"
+        set(:stage, "")
         Dir[deploy_config_path].each { |f| add_import f }
       end
 
       super
     end
 
-    # allows the `cap install` task to load without a capfile
     def capfile
-      File.expand_path(File.join(File.dirname(__FILE__),'..','Capfile'))
+      File.expand_path(File.join(File.dirname(__FILE__), "..", "Capfile"))
     end
 
     def version
-      ['--version', '-V',
+      ["--version", "-V",
        "Display the program version.",
-       lambda { |value|
-         puts "Capistrano Version: #{Capistrano::VERSION} (Rake Version: #{RAKEVERSION})"
+       lambda do |_value|
+         puts "Capistrano Version: #{Capistrano::VERSION} (Rake Version: #{Rake::VERSION})"
          exit
-       }
-      ]
+       end]
     end
 
     def dry_run
-      ['--dry-run', '-n',
+      ["--dry-run", "-n",
        "Do a dry run without executing actions",
-       lambda { |value|
+       lambda do |_value|
          Configuration.env.set(:sshkit_backend, SSHKit::Backend::Printer)
-       }
-      ]
+       end]
     end
 
     def roles
-      ['--roles ROLES', '-r',
+      ["--roles ROLES", "-r",
        "Run SSH commands only on hosts matching these roles",
-       lambda { |value|
+       lambda do |value|
          Configuration.env.add_cmdline_filter(:role, value)
-       }
-      ]
+       end]
     end
 
     def hostfilter
-      ['--hosts HOSTS', '-z',
+      ["--hosts HOSTS", "-z",
        "Run SSH commands only on matching hosts",
-       lambda { |value|
+       lambda do |value|
          Configuration.env.add_cmdline_filter(:host, value)
-       }
-      ]
+       end]
     end
 
+    def print_config_variables
+      ["--print-config-variables", "-p",
+       "Display the defined config variables before starting the deployment tasks.",
+       lambda do |_value|
+         Configuration.env.set(:print_config_variables, true)
+       end]
+    end
   end
-
 end
