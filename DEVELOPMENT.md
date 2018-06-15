@@ -28,11 +28,10 @@ Capistrano is a Ruby project, so we expect you to have a functioning Ruby enviro
 
 Make sure to install:
 
-* [Bundler](https://bundler.io/) 1.10.5 (see note)
+* [Bundler](https://bundler.io/)
 * [Vagrant](https://www.vagrantup.com/)
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (or another [Vagrant-supported](https://docs.vagrantup.com/v2/getting-started/providers.html) VM host)
 
-*Note: As of this writing (December 2015), Vagrant does not work with Bundler > 1.10.5. If you have multiple versions of Bundler installed, use the special underscore command-line argument to force a compatible version, like this: `bundle _1.10.5_ exec rake features`.*
 
 ### Running tests
 
@@ -45,7 +44,7 @@ $ bundle install
 # Run the RSpec suite
 $ bundle exec rake spec
 
-# Run the Cucumber suite (requires Bundler 1.10.5)
+# Run the Cucumber suite
 $ bundle exec rake features
 
 # Run the Cucumber suite and leave the VM running (faster for subsequent runs)
@@ -72,7 +71,7 @@ Pull requests are awesome, and if they arrive with decent tests, and conform to 
 
 Your code should conform to these guidelines:
 
- * The code is MIT licenced, your code will fall under the same license if we merge it.
+ * The code is MIT licensed, your code will fall under the same license if we merge it.
  * We can't merge it without a [good commit message](http://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message). If you do this right, Github will use the commit message as the body of your pull request, double win.
  * If you are making an improvement/fix for an existing issue, make sure to mention the issue number (if we have not yet merged it )
  * Add an entry to the `CHANGELOG` under the `### master` section, but please don't mess with the version.

@@ -88,6 +88,10 @@ Likewise, your server(s) will likely need supporting software installed before y
 
 Capistrano is designed to deploy using a single, non-privileged SSH user, using a *non-interactive* SSH session. If your deployment requires `sudo`, interactive prompts, authenticating as one user but running commands as another, you can probably accomplish this with Capistrano, but it may be difficult. Your automated deployments will be much smoother if you can avoid such requirements.
 
+#### Shells
+
+Capistrano 3 expects a POSIX shell like Bash or Sh. Shells like tcsh, csh, and such may work, but probably will not.
+
 ## Quick start
 
 ### Requirements
@@ -99,11 +103,11 @@ Capistrano is designed to deploy using a single, non-privileged SSH user, using 
 
 ### Install the Capistrano gem
 
-Add Capistrano to your project's Gemfile:
+Add Capistrano to your project's Gemfile using `require: false`:
 
 ``` ruby
 group :development do
-  gem "capistrano", "~> 3.8"
+  gem "capistrano", "~> 3.11", require: false
 end
 ```
 
@@ -196,7 +200,7 @@ Contributions to Capistrano, in the form of code, documentation or idea, are gla
 
 MIT License (MIT)
 
-Copyright (c) 2012-2015 Tom Clements, Lee Hambley
+Copyright (c) 2012-2018 Tom Clements, Lee Hambley
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
